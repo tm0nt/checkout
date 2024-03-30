@@ -92,7 +92,7 @@
                                                     required></v-text-field>
                                             </v-col>
                                         </v-row>
-                                        <v-btn class="me-4 mt-4" type="submit" v-if="!showPix || !showCreditCardForm"
+                                        <v-btn class="me-4 mt-4" type="submit"
                                             color="primary" block>PAGAR
                                             AGORA</v-btn>
                                     </v-form>
@@ -104,7 +104,7 @@
                                 só usar o aplicativo de seu
                                 banco para pagar PIX. O pagamento PIX foi desenvolvido pelo Banco Central para facilitar
                                 pagamentos.</v-alert>
-                            <v-btn class="me-4 mt-4" @click="paymentPix = true" color="primary" block>PAGAR
+                            <v-btn class="me-4 mt-4" v-if="showPix" @click="paymentPix = true" color="primary" block>PAGAR
                                 AGORA</v-btn>
                         </form>
                     </v-card-text>
