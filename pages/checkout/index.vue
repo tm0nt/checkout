@@ -42,7 +42,7 @@
                                 </v-col>
                             </v-row>
                             <v-row class="mt-n4">
-                                <v-col cols="4" md="3">
+                                <v-col cols="5" md="4">
                                     <v-card :variant="pixVariant" color="primary" subtitle="Pix" link rounded="xl"
                                         max-width="160" class="mr-md-n6" prepend-icon="mdi-cards-diamond"
                                         @click="toggleCard('pix')">
@@ -51,7 +51,7 @@
                                         </template>
                                     </v-card>
                                 </v-col>
-                                <v-col cols="4" md="3">
+                                <v-col cols="5" md="4">
                                     <v-card :variant="creditCardVariant" subtitle="Cartão" color="primary"
                                         variant="tonal" class="ml-md-n6 ml-n4" link rounded="xl" max-width="160"
                                         prepend-icon="mdi-credit-card" @click="toggleCard('creditCard')">
