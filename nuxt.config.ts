@@ -98,13 +98,13 @@ export default defineNuxtConfig({
     meta: {
       name: shortTitle,
       author: "Tássio Montenegro",
-      theme_color: "#4f46e5",
+      theme_color: "#151515",
       description: description,
     },
     manifest: {
       name: shortTitle,
       short_name: shortTitle,
-      theme_color: "#4f46e5",
+      theme_color: "#151515",
       description: description,
     },
   },
