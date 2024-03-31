@@ -24,11 +24,11 @@
             </v-row>
             <v-dialog width="400" v-model="ProductDialog" persistent>
                 <v-card flat rounded="xl" color="background" class="overflow-hidden">
-                    <v-card-title><v-icon @click="ProductDialog = false" size="24">mdi-close</v-icon></v-card-title>
+                    <v-card-title><v-icon @click="ProductDialog = false" size="24">mdi-close</v-icon>&nbsp;&nbsp;<v-btn prepend-icon="mdi-delete" fab color="red"></v-btn></v-card-title>
                     <v-card-text>
                         <v-form>
                             <v-row align="center" justify="center">
-                                <v-col cols="12">
+                                <v-col cols="12"
                                     <v-text-field bg-color="surface" placeholder="Nome produto"
                                         prepend-inner-icon="mdi-cup"></v-text-field>
                                     <v-text-field bg-color="surface" class="mt-n4" placeholder="Valor"
