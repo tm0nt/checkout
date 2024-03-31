@@ -28,7 +28,7 @@
                     <v-card-text>
                         <v-form>
                             <v-row align="center" justify="center">
-                                <v-col cols="12"
+                                <v-col cols="12">
                                     <v-text-field bg-color="surface" placeholder="Nome produto"
                                         prepend-inner-icon="mdi-cup"></v-text-field>
                                     <v-text-field bg-color="surface" class="mt-n4" placeholder="Valor"
