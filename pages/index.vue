@@ -12,7 +12,7 @@
                 <v-col cols="12" md="3">
                   <v-text-field placeholder="E-mail" prepend-inner-icon="mdi-email" type="email" bg-color="surface"></v-text-field>
                   <v-text-field class="mt-n4" placeholder="Senha" type="password" prepend-inner-icon="mdi-password" bg-color="surface"></v-text-field>
-                  <v-btn color="primary" class="text-capitalize" block rounded="xl">Entrar</v-btn>
+                  <v-btn color="primary" class="text-capitalize" block rounded="xl" to="/dashboard">Entrar</v-btn>
                   <v-btn color="primary" class="text-capitalize mt-2" variant="outlined" block rounded="xl">Esqueci a
                     senha</v-btn>
                 </v-col>
