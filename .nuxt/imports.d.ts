@@ -33,5 +33,4 @@ export { fluentAliases, fluentCustom } from '../utils/fluentIcons';
 export { LIGHT_THEME, light, DARK_THEME, dark } from '../utils/themes';
 export { twColors } from '../utils/tw-colors';
 export { usePWAIcon } from '../node_modules/@kevinmarrec/nuxt-pwa/dist/runtime/composables/usePWAIcon';
-export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
