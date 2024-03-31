@@ -27,10 +27,26 @@
             </v-row>
             <v-row>
                 <v-col cols="12">
-                    <v-btn color="primary" block class="mb-n6" variant="tonal" prepend-icon="mdi-database">Banco de dados</v-btn>
+                        <v-text-field
+        v-model="search"
+        label="Pesquise registros"
+        prepend-inner-icon="mdi-magnify"
+        class="mb-n2"
+                        bg-color="surface"
+        hide-details
+        single-line
+      ></v-text-field>
                     </v-col>
                 <v-col cols="12">
-                    <v-data-table items-per-page-text="Cadastros por página" no-data-text="Não existe nenhum cliente":items="items"></v-data-table>
+                    <v-btn color="primary" block class="mb-n6" variant="tonal" prepend-icon="mdi-database">Banco de dados (clientes)</v-btn>
+                    </v-col>
+
+                <v-col cols="12">
+                    <v-data-table v-model:search="search" items-per-page-text="Cadastros por página" no-data-text="Não existe nenhum cliente":items="items">
+                        <template v-slot:item.ação="{item}">
+                            <v-btn @click="infoDialogClient = truez" color="primary" variant="tonal" prepend-icon="mdi-info">INFO</v-btn>
+                        </template>
+                    </v-data-table>
                 </v-col>
                 <v-col cols="12">
                     <v-btn color="primary" class="mt-n4" variant="outlined" prepend-icon="mdi-content-save">EXPORTAR COMO</v-btn>
@@ -39,6 +55,28 @@
     </v-container>
 </v-row>
     <Navbar />
+    <v-dialog v-model="infoDialogClient" width="400" persistent>
+        <v-card rounded="xl" flat color="background" class="overflow-hidden">
+            <v-card-title><v-icon @click="infoDialogClient = false">mdi-close</v-icon></v-card-title>
+            <v-card-text>
+                <v-form>
+                            <v-row align="center" justify="center">
+                                <v-col cols="12">
+                                    <v-text-field bg-color="surface" placeholder="Nome completo"
+                                        prepend-inner-icon="mdi-account"></v-text-field>
+                                    <v-text-field bg-color="surface" class="mt-n4" type="email" placeholder="Email"
+                                        prepend-inner-icon="mdi-email"></v-text-field>
+                                        <v-text-field placeholder="Celular" type="number" bg-color="surface" class="mt-n4"  prepend-inner-icon="mdi-phone"></v-text-field>
+                                        <v-text-field placeholder="Compra" bg-color="surface" class="mt-n4"  prepend-inner-icon="mdi-cart"></v-text-field>
+                                        <v-text-field placeholder="Método"  bg-color="surface" class="mt-n4"  prepend-inner-icon="mdi-list-box"></v-text-field>
+
+                                </v-col>
+                            </v-row>
+                        </v-form>
+                </v-card-text>
+        </v-card>
+
+    </v-dialog>
 </template>
 <script>
 import Navbar from "../../components/navbar.vue";
@@ -51,12 +89,14 @@ export default {
 
 </script>
 <script setup>
+const infoDialogClient = ref(false);
+const search = ref("");
   const items = [
     {
       nome: 'Maxwell',
-      email: 'maxwell@gmail.com',
       produto: 'SPN Academy 4',
       metodo: 'Pix',
+      ação: '',
     },
   ]
 </script>
