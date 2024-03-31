@@ -9,7 +9,7 @@
               <h1 class="text-center mt-4">Bem-vindo ao mundo real</h1>
               <p class="text-caption text-medium-emphasis">Entre com suas credenciais para escapar da matrix!</p>
               <v-row justify="center" class="mt-4">
-                <v-col cols="3">
+                <v-col cols="12" md="3">
                   <v-text-field placeholder="E-mail" prepend-inner-icon="mdi-email" type="email" bg-color="surface"></v-text-field>
                   <v-text-field class="mt-n4" placeholder="Senha" type="password" prepend-inner-icon="mdi-password" bg-color="surface"></v-text-field>
                   <v-btn color="primary" class="text-capitalize" block rounded="xl">Entrar</v-btn>
