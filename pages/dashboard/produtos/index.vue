@@ -28,15 +28,15 @@
                     <v-card-text>
                         <v-form>
                             <v-row align="center" justify="center">
-                                <v-col cols="11">
+                                <v-col cols="12">
                                     <v-text-field bg-color="surface" placeholder="Nome produto"
                                         prepend-inner-icon="mdi-cup"></v-text-field>
                                     <v-text-field bg-color="surface" class="mt-n4" placeholder="Valor"
                                         prepend-inner-icon="mdi-coin"></v-text-field>
                                     <v-btn color="primary" prepend-icon="mdi-image" class="mb-2" variant="tonal"
                                         append-icon="mdi-plus">BANNER</v-btn>
-                                    <v-color-picker hide-inputs elevation="15"></v-color-picker>
-                                    <v-text-field placeholder="Link checkout" bg-color="surface" class="mt-2" variant="mdi-link"></v-text-field>
+                                    <v-color-picker hide-inputs></v-color-picker>
+                                    <v-text-field placeholder="Link checkout" bg-color="surface" class="mt-2" variant="mdi-at"></v-text-field>
                                     <v-btn color="primary" class="mt-2" block
                                         prepend-icon="mdi-chevron-right-circle">CADASTRAR</v-btn>
                                 </v-col>
@@ -64,10 +64,10 @@ export default {
 const ProductDialog = ref(false)
 const items = [
     {
-        nome: 'Social Pro Academy',
-        valor: 'R$ 56,00',
+        nome: 'SPN',
+        valor: '56,00',
         transações: '2236',
-        montante: 'R$ 125.216,000',
+        montante: '125.216,000',
         ação: "",
     },
 ]

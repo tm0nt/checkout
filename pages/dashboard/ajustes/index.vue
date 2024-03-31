@@ -5,10 +5,9 @@
             <v-btn variant="tonal" rounded="lg" class="mb-4" color="primary" prepend-icon="mdi-account">Maxwell
                 Schlomer</v-btn>
             <v-row>
-                <v-col cols="12">
+                <v-col cols="12" md="4">
                     <v-card
     class="pa-2"
-    max-width="300"
   >
     <v-list>
       <v-list-subheader>Configurações</v-list-subheader>
