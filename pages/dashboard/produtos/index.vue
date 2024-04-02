@@ -65,7 +65,7 @@
                                                     color="primary">mdi-close</v-icon></v-btn>
                                         </v-img>
                                     </v-card>
-                                    <v-color-picker hide-inputs v-model="cor" label="Cor dos botões"></v-color-picker>
+                                    <v-color-picker v-model="cor" label="Cor dos botões"></v-color-picker>
                                     <v-btn color="primary" class="mt-2" block type="submit"
                                         prepend-icon="mdi-chevron-right-circle">CADASTRAR</v-btn>
                                 </v-col>
