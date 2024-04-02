@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-card height="300" :image="dataResponse[0]?.banner" flat>
+        <v-card width="100%" height="100%" :image="dataResponse[0]?.banner" flat>
                     </v-card>
         <v-container>
             <v-card class="mx-auto elevation-0" color="rgb(0,0,0,0)" flat>
@@ -16,7 +16,7 @@
             <v-row>
                 <v-toolbar color="rgb(0,0,0,0)" height="20"></v-toolbar>
 
-                <v-card class="mx-auto elevation-2" width="800" color="#101010" rounded="xl">
+                <v-card class="mx-auto elevation-2" width="800" color="background" rounded="xl">
                     <v-btn :color="color" variant="tonal" block>{{ dataResponse[0]?.nome }}</v-btn>
 
                     <v-card-text>

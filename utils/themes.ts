@@ -1,14 +1,14 @@
 import { ThemeDefinition } from "vuetify";
 
 // String that represents the name of the theme I am using
-export const LIGHT_THEME = "dark";
+export const LIGHT_THEME = "light";
 // Light mode theme
 export const light: ThemeDefinition = {
   dark: false,
   colors: {
     background: "#F1F1F1",
     surface: "#FFFFFF",
-    primary: "#f41b34",
+    primary: "#F3954A",
     secondary: twColors.purple[600],
     error: twColors.red[500],
     info: twColors.blue[500],

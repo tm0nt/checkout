@@ -53,10 +53,10 @@
                                     <v-text-field bg-color="surface" class="mt-n4" placeholder="Valor" v-model="valor"
                                         prepend-inner-icon="mdi-coin"></v-text-field>
                                     <v-text-field placeholder="Link checkout" bg-color="surface" class="mt-n4"
-                                        v-model="checkout" variant="mdi-at"
-                                        prepend-inner-icon="mdi-link"></v-text-field>
-                                    <v-file-input show-size bg-color="surface" label="Envie um banner"
-                                        rounded="xl" accept="image/*" counter variant="solo" :prepend-icon="false" chips
+                                        v-model="checkout" variant="solo"
+                                        prepend-inner-icon="mdi-at"></v-text-field>
+                                    <v-file-input class="mt-n4" density="compact" show-size bg-color="surface" label="Envie um banner"
+                                        rounded="xl" accept="image/*" counter  variant="solo" :prepend-icon="false" chips
                                         prepend-inner-icon="mdi-camera" @change="handleUploadCover"></v-file-input>
                                     <v-card class="rounded-xl elevation-0" flat v-if="imagePreviewCover" width="150">
                                         <v-img  :src="imagePreviewCover" cover alt="Prévia do banner">
@@ -65,7 +65,7 @@
                                                     color="primary">mdi-close</v-icon></v-btn>
                                         </v-img>
                                     </v-card>
-                                    <v-color-picker hide-inputs v-model="cor"></v-color-picker>
+                                    <v-color-picker hide-inputs v-model="cor" label="Cor dos botões"></v-color-picker>
                                     <v-btn color="primary" class="mt-2" block type="submit"
                                         prepend-icon="mdi-chevron-right-circle">CADASTRAR</v-btn>
                                 </v-col>
