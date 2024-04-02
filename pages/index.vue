@@ -4,10 +4,9 @@
       <v-col cols="12" class="overflow-hidden">
         <v-card flat color="rgb(0,0,0,0)" class="elevation-0">
           <v-card-text class="text-center">
-            <v-img src="https://i.imgur.com/Nao6Lvf.png" width="100" class="mx-auto"></v-img>
+            <v-img src="https://i.imgur.com/olMbUrE.png" width="200" class="mx-auto"></v-img>
             <v-form @submit.prevent="submit">
-              <h1 class="text-center mt-4">Bem-vindo ao mundo real</h1>
-              <p class="text-caption text-medium-emphasis">Entre com suas credenciais para escapar da matrix!</p>
+              <p class="text-caption text-medium-emphasis mt-4">Entre com suas credenciais para escapar da matrix!</p>
               <v-row justify="center" class="mt-4">
                 <v-col cols="12" md="3">
                   <v-text-field placeholder="Usuário" v-model="user" prepend-inner-icon="mdi-account" bg-color="surface"
