@@ -1,5 +1,13 @@
 <template>
                     <v-img  width="100%":src="dataResponse[0]?.banner">
+                        <template v-slot:placeholder>
+      <div class="d-flex align-center justify-center fill-height">
+        <v-progress-circular
+            :color="color"
+          indeterminate
+        ></v-progress-circular>
+      </div>
+    </template>
                     </v-img>
     <v-app>
         <v-container>
