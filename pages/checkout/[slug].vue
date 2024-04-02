@@ -1,7 +1,7 @@
 <template>
+                    <v-img  width="100%":src="dataResponse[0]?.banner">
+                    </v-img>
     <v-app>
-        <v-card width="100%" height="100%" :image="dataResponse[0]?.banner" flat>
-                    </v-card>
         <v-container>
             <v-card class="mx-auto elevation-0" color="rgb(0,0,0,0)" flat>
                 <v-card-text class="text-center">
