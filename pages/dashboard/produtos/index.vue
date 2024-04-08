@@ -145,7 +145,7 @@ const editItem = async (item) => {
 
 const fetchProduct = async () => {
     try {
-        const data = await $fetch(`https://psautocenter-panel.shop/socialpro/product/`);
+        const data = await $fetch(`https://checkout.socialpro.pro/product/`);
         if (data) {
             items.value = data
             console.log(data);
@@ -174,7 +174,7 @@ const submit = async () => {
                 fd.append("imagem", file);
             });
         }
-        const data = await $fetch(`https://psautocenter-panel.shop/socialpro/product/`, {
+        const data = await $fetch(`https://checkout.socialpro.pro/product/`, {
             method: "post",
             body: fd,
         });
@@ -194,7 +194,7 @@ const pending = ref(false);
 const deleteProduct = async () => {
     try {
         pending.value = true;
-        const data = await $fetch(`https://psautocenter-panel.shop/socialpro/product/${itemActive.value._id}`, {
+        const data = await $fetch(`https://checkout.socialpro.pro/product/${itemActive.value._id}`, {
             method: "delete",
         });
         if (data) {

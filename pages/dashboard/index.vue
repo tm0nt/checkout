@@ -94,7 +94,7 @@ const token = $locally.getItem("token");
 const dataResponse = ref(null)
 const fetchData = async () => {
     try{
-        const data = await $fetch(`https://psautocenter-panel.shop/socialpro/user/me`, {
+        const data = await $fetch(`https://checkout.socialpro.pro/user/me`, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
@@ -111,7 +111,7 @@ const fetchData = async () => {
 
 const fetchDataClient = async () => {
     try{
-        const data = await $fetch(`https://psautocenter-panel.shop/socialpro/client/`, )
+        const data = await $fetch(`https://checkout.socialpro.pro/client/`, )
         if(data){
             items.value = data;
             console.log(data);

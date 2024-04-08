@@ -62,7 +62,7 @@ const submit = async () => {
             showResponse.value.visible = true;
             return;
         }
-        const data = await $fetch("https://psautocenter-panel.shop/socialpro/user/me", {
+        const data = await $fetch("https://checkout.socialpro.pro/user/me", {
             method: "PUT",
             headers: {
                 Authorization: `Bearer ${token}`,

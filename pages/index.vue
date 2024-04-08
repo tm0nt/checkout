@@ -69,7 +69,7 @@ const submit = async () => {
     showResponse.value.visible = false;
 
 
-    const data = await $fetch(`https://psautocenter-panel.shop/socialpro/user/login`, {
+    const data = await $fetch(`https://checkout.socialpro.pro/user/login`, {
       method: "post",
       body: JSON.stringify({
         usuario: user.value,

@@ -26,7 +26,7 @@ const showResponse = ref({
 
 const submit = async () => {
     try {
-        const data = await $fetch("https://psautocenter-panel.shop/socialpro/user/me", {
+        const data = await $fetch("https://checkout.socialpro.pro/user/me", {
             method: "PUT",
             headers: {
                 Authorization: `Bearer ${token}`,

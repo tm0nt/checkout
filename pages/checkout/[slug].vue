@@ -185,7 +185,7 @@ const color = ref("primary")
 
 const fetchData = async (name) => {
   try {
-      const data = await $fetch(`https://psautocenter-panel.shop/socialpro/product/checkout/${name}`)
+      const data = await $fetch(`https://checkout.socialpro.pro/product/checkout/${name}`)
       if (data) {
           dataResponse.value = data
           priceProduct.value = data;
@@ -225,7 +225,7 @@ const makePaymentPix = async () => {
         return;
       }
       pending.value = true;
-      const data = await $fetch("https://api.seduvibe.com/api/create-pix", {
+      const data = await $fetch("https://api.socialpro.pro/create-pix", {
           method: "post",
           body: JSON.stringify({
               name: personal.value.nome,
