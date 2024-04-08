@@ -2,7 +2,6 @@
     <v-row offset-md="2">
         <v-container>
             <v-toolbar color="rgb(0,0,0,0)" height="40"></v-toolbar>
-            <v-btn variant="tonal" rounded="lg" class="mb-4" color="primary" prepend-icon="mdi-account">{{ dataResponse?.nome }}</v-btn>
             <v-row>
                 <v-col cols="12" md="6">
                     <v-card color="surface" link flat class="elevation-0" height="85" prepend-icon="mdi-currency-usd"

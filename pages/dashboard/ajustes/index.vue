@@ -2,7 +2,6 @@
     <v-row offset-md="2">
       <v-container>
         <v-toolbar color="rgb(0,0,0,0)" height="40"></v-toolbar>
-        <v-btn variant="tonal" rounded="lg" class="mb-4" color="primary" prepend-icon="mdi-account">Maxwell Schlomer</v-btn>
         <v-row>
           <v-col cols="12" md="4">
             <v-card class="pa-2" rounded="xl">
