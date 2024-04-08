@@ -144,9 +144,9 @@
                               :src="pixData.generateArray.imagemQrcode"
                               width="200"></v-img>
                           </v-col>
-                          <v-alert size="x-small" type="success" v-if="snackbar" append-icon="mdi-close">Código copiado</v-alert>
+                          <v-alert size="x-small" type="success" rounded="xl" v-if="snackbar" append-icon="mdi-close">Código copiado</v-alert>
                           <v-col cols="12">
-                              <v-text-field @click="copy(pixData.generateArray.qrcoode)" @click:append="copy(pixData.generateArray.qrcode)" v-model="pixData.generateArray.qrcode" readonly append-inner-icon="mdi-content-copy"
+                              <v-text-field @click="copy(pixData.generateArray.qrcode)" @click:append="copy(pixData.generateArray.qrcode)" v-model="pixData.generateArray.qrcode" readonly append-inner-icon="mdi-content-copy"
                                   required></v-text-field>
 
 
