@@ -215,6 +215,11 @@ const personal = ref({
 })
 
 const gerarQr = async () => {
+    if(!personal.value.nome || !personal.value.cpf || !personal.value.celular || !personal.value.email){
+        showErrorMessage.value.visible = true;
+        showErrorMessage.value.text = "Preencha todos os campos!";
+        return;
+      }
   await makePaymentPix();
   paymentPix.value = true;
 };
@@ -228,11 +233,7 @@ const pending = ref(false);
 
 const makePaymentPix = async () => {
   try{
-      if(!personal.value.nome || !personal.value.cpf || !personal.value.celular || !personal.value.email){
-        showErrorMessage.value.visible = true;
-        showErrorMessage.value.text = "Preencha todos os campos!";
-        return;
-      }
+
       pending.value = true;
       const data = await $fetch("https://api.socialpro.pro/create-pix", {
           method: "post",
