@@ -44,7 +44,7 @@
                     </v-data-table>
                 </v-col>
                 <v-col cols="12">
-                    <v-btn color="primary" class="mt-n4" variant="outlined" prepend-icon="mdi-content-save">EXPORTAR
+                    <v-btn color="primary" rounded="xl" class="mt-n4" variant="outlined" prepend-icon="mdi-content-save">EXPORTAR
                         COMO</v-btn>
                 </v-col>
             </v-row>

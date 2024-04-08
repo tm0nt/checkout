@@ -3,7 +3,7 @@
         <v-text-field bg-color="surface" prepend-inner-icon="mdi-account" label="Nome" readonly v-model="nome"></v-text-field>
         <v-text-field bg-color="surface" label="Email" class="mt-n4" readonly prepend-inner-icon="mdi-email" v-model="email">
     </v-text-field>
-    <v-btn variant="outlined" color="primary" @click="dialogChangePassword = true">ALTERAR SENHA</v-btn>
+    <v-btn variant="outlined" color="primary" @click="dialogChangePassword = true" rounded="xl">ALTERAR SENHA</v-btn>
     </v-card>
     <v-dialog persistent v-model="dialogChangePassword" width="400">
         <v-card rounded="xl" color="background" class="overflow-hidden">
@@ -19,7 +19,7 @@
                                         <v-card variant="tonal" class="mb-4 mt-n2" :prepend-icon="showResponse.icon" :subtitle="showResponse.text"
             v-if="showResponse.visible" :color="showResponse.color" rounded="xl" flat>
         </v-card>
-                                    <v-btn color="primary" type="submit" class="mt-2" block
+                                    <v-btn color="primary" type="submit" class="mt-2" block rounded="xl"
                                         prepend-icon="mdi-chevron-right-circle">ALTERAR</v-btn>
                                 </v-col>
                             </v-row>

@@ -8,7 +8,7 @@
         <v-card variant="tonal" class="mb-4 mt-n2" :prepend-icon="showResponse.icon" :subtitle="showResponse.text"
             v-if="showResponse.visible" :color="showResponse.color" rounded="xl" flat>
         </v-card>
-        <v-btn color="primary" type="submit" prepend-icon="mdi-chevron-right-circle">SALVAR</v-btn>
+        <v-btn color="primary" type="submit" prepend-icon="mdi-chevron-right-circle" rounded="xl">SALVAR</v-btn>
     </v-form>
 
 </template>

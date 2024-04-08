@@ -2,8 +2,6 @@
     <v-row offset-md="2">
         <v-container>
             <v-toolbar color="rgb(0,0,0,0)" height="40"></v-toolbar>
-            <v-btn variant="tonal" rounded="lg" class="mb-4" color="primary" prepend-icon="mdi-account">Maxwell
-                Schlomer</v-btn>
             <v-row>
                 <v-col cols="12">
                     <v-btn color="primary" block class="mb-n6" variant="tonal" prepend-icon="mdi-database">Produtos
@@ -12,17 +10,14 @@
                 <v-col cols="12">
                     <v-data-table :headers="headers" items-per-page-text="Produtos por página"
                         no-data-text="Não existe nenhum produto cadastrado" :items="items">
-                        <template v-slot:item.açao="{ item }">
-                            <v-btn color="primary" variant="tonal" @click="editItem(item)">EDITAR</v-btn>
-                        </template>
                         <template v-slot:item.checkoutLink="{ item }">
-                            <v-btn :href="'https://socialpro.pro/checkout/' + item.checkoutLink" color="primary"
+                            <v-btn :href="'https://socialpro.pro/checkout/' + item.checkoutLink" color="primary" size="small" rounded="xl"
                                 variant="tonal" append-icon="mdi-share">Compartilhar</v-btn>
                         </template>
                     </v-data-table>
                 </v-col>
                 <v-col cols="12">
-                    <v-btn color="primary" class="mt-n4" variant="outlined" prepend-icon="mdi-content-save"
+                    <v-btn color="primary" class="mt-n4" variant="outlined" prepend-icon="mdi-content-save" rounded="xl"
                         @click="ProductDialog = true">CRIAR NOVO</v-btn>
                 </v-col>
             </v-row>
@@ -66,7 +61,7 @@
                                         </v-img>
                                     </v-card>
                                     <v-color-picker v-model="cor" label="Cor dos botões"></v-color-picker>
-                                    <v-btn color="primary" class="mt-2" block type="submit"
+                                    <v-btn color="primary" class="mt-2" block type="submit" rounded="xl"
                                         prepend-icon="mdi-chevron-right-circle">CADASTRAR</v-btn>
                                 </v-col>
                             </v-row>
@@ -183,6 +178,7 @@ const submit = async () => {
             showResponse.value.color = "success";
             showResponse.value.text = "Produto cadastrado!";
             showResponse.value.visible = true;
+            ProductDialog.value = false;
             fetchProduct();
         }
     } catch (error) {
@@ -223,7 +219,6 @@ const headers = [
     { title: "Nome", value: "nome" },
     { title: "Valor", key: "valor" },
     { title: "Link", value: "checkoutLink" },
-    { title: "Ação", key: "açao" },
 ];
 const items = ref(null)
 await fetchProduct();
