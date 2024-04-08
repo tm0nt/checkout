@@ -1,176 +1,178 @@
 <template>
-                    <v-img  width="100%":src="dataResponse[0]?.banner">
-                        <template v-slot:placeholder>
-      <div class="d-flex align-center justify-center fill-height">
-        <v-progress-circular
-            :color="color"
-          indeterminate
-        ></v-progress-circular>
-      </div>
-    </template>
-                    </v-img>
-    <v-app>
-        <v-container>
-            <v-card class="mx-auto elevation-0" color="rgb(0,0,0,0)" flat>
-                <v-card-text class="text-center">
-                    <v-badge content="65% OFF">
-                        <v-btn :color="color" size="x-large" variant="tonal" rounded="xl">
-                            {{ dataResponse[0]?.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
-                        </v-btn>
-                    </v-badge>
-                </v-card-text>
-            </v-card>
+  <v-img width="100%" :src="dataResponse[0]?.banner">
+      <template v-slot:placeholder>
+          <div class="d-flex align-center justify-center fill-height">
+              <v-progress-circular :color="color" indeterminate></v-progress-circular>
+          </div>
+      </template>
+  </v-img>
+  <v-app>
+      <v-container>
+          <v-card class="mx-auto elevation-0" color="rgb(0,0,0,0)" flat>
+              <v-card-text class="text-center">
+                  <v-badge content="65% OFF">
+                      <v-btn :color="color" size="x-large" variant="tonal" rounded="xl">
+                          {{ dataResponse[0]?.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
+                      </v-btn>
+                  </v-badge>
+              </v-card-text>
+          </v-card>
 
-            <v-row>
-                <v-toolbar color="rgb(0,0,0,0)" height="20"></v-toolbar>
+          <v-row>
+              <v-toolbar color="rgb(0,0,0,0)" height="20"></v-toolbar>
 
-                <v-card class="mx-auto elevation-2" width="800" color="background" rounded="xl">
-                    <v-btn :color="color" variant="tonal" block>{{ dataResponse[0]?.nome }}</v-btn>
+              <v-card class="mx-auto elevation-0" width="800" color="background" rounded="xl">
+                  <v-btn :color="color" variant="tonal" block>{{ dataResponse[0]?.nome }}</v-btn>
 
-                    <v-card-text>
-                        <form>
-                            <v-row>
-                                <v-col cols="12" md="6">
-                                    <v-text-field v-model="state.name" label="Nome completo" :color="color"
-                                        prepend-inner-icon="mdi-account" required></v-text-field>
-                                </v-col>
-                                <v-col cols="12" md="6">
-                                    <v-text-field v-model="state.email" class="mt-n8 mt-md-0" label="E-mail"
-                                        :color="color" prepend-inner-icon="mdi-email" required></v-text-field>
-                                </v-col>
-                                <v-col cols="12" md="6" class="mt-md-n8">
-                                    <v-text-field v-model="state.email" class="mt-n8 mt-md-0" label="CPF" required
-                                        :color="color" prepend-inner-icon="mdi-document"></v-text-field>
-                                </v-col>
-                                <v-col cols="12" md="6" class="mt-md-n8">
-                                    <v-text-field v-model="state.email" class="mt-n8 mt-md-0" label="Celular"
-                                        :color="color" prepend-inner-icon="mdi-phone" required></v-text-field>
-                                </v-col>
-                            </v-row>
-                            <v-row class="mt-n4">
-                                <v-col cols="5" md="3">
-                                    <v-card :variant="pixVariant" :color="color" subtitle="Pix" link rounded="xl"
-                                        max-width="160" class="mr-md-n6" prepend-icon="mdi-cards-diamond"
-                                        @click="toggleCard('pix')">
-                                        <template v-slot:append>
-                                            <v-icon v-if="showPix">mdi-check-circle</v-icon>
-                                        </template>
-                                    </v-card>
-                                </v-col>
-                                <v-col cols="5" md="4">
-                                    <v-card :variant="creditCardVariant" subtitle="Cartão" :color="color"
-                                        variant="tonal" class="ml-md-n6 ml-n4" link rounded="xl" max-width="160"
-                                        prepend-icon="mdi-credit-card" @click="toggleCard('creditCard')">
-                                        <template v-slot:append>
-                                            <v-icon v-if="showCreditCardForm">mdi-check-circle</v-icon>
-                                        </template>
-                                    </v-card>
-                                </v-col>
-                            </v-row>
+                  <v-card-text>
+                      <form>
+                          <v-row>
+                              <v-col cols="12" md="6">
+                                  <v-text-field hide-spin-buttons v-model="personal.nome" label="Nome completo" :color="color"
+                                      prepend-inner-icon="mdi-account" required></v-text-field>
+                              </v-col>
+                              <v-col cols="12" md="6">
+                                  <v-text-field hide-spin-buttons v-model="personal.email" class="mt-n8 mt-md-0" label="E-mail"
+                                      :color="color" prepend-inner-icon="mdi-email" required></v-text-field>
+                              </v-col>
+                              <v-col cols="12" md="6" class="mt-md-n8">
+                                  <v-text-field v-model="personal.cpf"  hide-spin-buttons  type="number" class="mt-n8 mt-md-0" label="CPF" required
+                                      :color="color" prepend-inner-icon="mdi-document"></v-text-field>
+                              </v-col>
+                              <v-col cols="12" md="6" class="mt-md-n8">
+                                  <v-text-field v-model="personal.celular" type="number"  hide-spin-buttons   class="mt-n8 mt-md-0" label="Celular"
+                                      :color="color" prepend-inner-icon="mdi-phone" required></v-text-field>
+                              </v-col>
+                          </v-row>
+                          <v-alert variant="tonal" class="mb-4 mt-n4" type="error" v-if="showErrorMessage.visible" rounded="xl">{{showErrorMessage.text}}</v-alert>
+                          <v-row class="mt-n4">
+                              <v-col cols="5" md="3">
+                                  <v-card :variant="pixVariant" :color="color" link rounded="xl"
+                                      max-width="160" class="mr-md-n6" prepend-icon="mdi-cards-diamond"
+                                      @click="toggleCard('pix')">
+                                      <template v-slot:append>
+                                          <v-icon v-if="showPix">mdi-check-circle</v-icon>
+                                      </template>
+                                      <template v-slot:subtitle>
+                                        <p class="text-subtitle-1">Pix</p>
+                                      </template>
+                                  </v-card>
+                              </v-col>
+                              <v-col cols="5" md="4">
+                                  <v-card :variant="creditCardVariant" :color="color"
+                                      variant="tonal" class="ml-md-n6 ml-n4" link rounded="xl" max-width="160"
+                                      prepend-icon="mdi-credit-card" @click="toggleCard('creditCard')">
+                                      <template v-slot:append>
+                                          <v-icon v-if="showCreditCardForm">mdi-check-circle</v-icon>
+                                      </template>
+                                      <template v-slot:subtitle>
+                                        <p class="text-subtitle-1">Cartão</p>
+                                      </template>
+                                  </v-card>
+                              </v-col>
+                          </v-row>
 
-                            <!-- Formulário de cartão de crédito -->
-                            <v-card class="elevation-0 mx-auto" flat v-if="showCreditCardForm" color="rgb(0,0,0,0)">
-                                <v-card-text>
-                                    <v-form @submit.prevent="submitCreditCardForm">
-                                        <v-row>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="state.name" label="Número do cartão de crédito"
-                                                    :color="color" prepend-inner-icon="mdi-credit-card"
-                                                    required></v-text-field>
-                                            </v-col>
-                                            <v-col cols="6" md="4" class="mt-md-n8">
-                                                <v-text-field v-model="state.email" class="mt-n8 mt-md-0" label="Mês"
-                                                    :color="color" prepend-inner-icon="mdi-calendar-month-outline"
-                                                    required></v-text-field>
-                                            </v-col>
-                                            <v-col cols="6" md="4" class="mt-md-n8">
-                                                <v-text-field v-model="state.email" class="mt-n8 mt-md-0" label="Ano"
-                                                    :color="color" required
-                                                    prepend-inner-icon="mdi-calendar-month-outline"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" md="4" class="mt-md-n8">
-                                                <v-text-field v-model="state.email" class="mt-n8 mt-md-0" :color="color"
-                                                    label="Cód. segurança" prepend-inner-icon="mdi-numeric"
-                                                    required></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" class="mt-md-n8">
-                                                <v-text-field v-model="state.email" class="mt-n8 mt-md-0" :color="color"
-                                                    label="Parcelas" prepend-inner-icon="mdi-fraction-one-half"
-                                                    required></v-text-field>
-                                            </v-col>
-                                        </v-row>
-                                        <v-btn class="me-4 mt-4" type="submit" :color="color" block>PAGAR
-                                            AGORA</v-btn>
-                                    </v-form>
-                                </v-card-text>
-                            </v-card>
+                          <!-- Formulário de cartão de crédito -->
+                          <v-card class="elevation-0 mx-auto" flat v-if="showCreditCardForm" color="rgb(0,0,0,0)">
+                              <v-card-text>
+                                  <v-form @submit.prevent="submitCreditCardForm">
+                                      <v-row>
+                                          <v-col cols="12">
+                                              <v-text-field  label="Número do cartão de crédito"
+                                                  :color="color" prepend-inner-icon="mdi-credit-card"
+                                                  required></v-text-field>
+                                          </v-col>
+                                          <v-col cols="6" md="4" class="mt-md-n8">
+                                              <v-text-field class="mt-n8 mt-md-0" label="Mês"
+                                                  :color="color" prepend-inner-icon="mdi-calendar-month-outline"
+                                                  required></v-text-field>
+                                          </v-col>
+                                          <v-col cols="6" md="4" class="mt-md-n8">
+                                              <v-text-field  class="mt-n8 mt-md-0" label="Ano"
+                                                  :color="color" required
+                                                  prepend-inner-icon="mdi-calendar-month-outline"></v-text-field>
+                                          </v-col>
+                                          <v-col cols="12" md="4" class="mt-md-n8">
+                                              <v-text-field  class="mt-n8 mt-md-0" :color="color"
+                                                  label="Cód. segurança" prepend-inner-icon="mdi-numeric"
+                                                  required></v-text-field>
+                                          </v-col>
+                                          <v-col cols="12" class="mt-md-n8">
+                                              <v-text-field  class="mt-n8 mt-md-0" :color="color"
+                                                  label="Parcelas" prepend-inner-icon="mdi-fraction-one-half"
+                                                  required></v-text-field>
+                                          </v-col>
+                                      </v-row>
+                                      <v-btn class="me-4 mt-4" :disabled="pending" rounded="xl" type="submit" :color="color" block><span v-if="!pending">PAGAR AGORA</span><v-progress-circular size="20" indeterminate :color="color" v-if="!pending"></v-progress-circular></v-btn>
+                                  </v-form>
+                              </v-card-text>
+                          </v-card>
 
-                            <!-- Alerta para Pix -->
-                            <v-alert v-else-if="showPix" type="info" outlined class="mt-4">Para pagar o pix é simples,
-                                só usar o aplicativo de seu
-                                banco para pagar PIX. O pagamento PIX foi desenvolvido pelo Banco Central para facilitar
-                                pagamentos.</v-alert>
-                            <v-btn class="me-4 mt-4" v-if="showPix" @click="paymentPix = true" :color="color"
-                                block>PAGAR
-                                AGORA</v-btn>
-                        </form>
-                    </v-card-text>
-                </v-card>
-            </v-row>
+                          <!-- Alerta para Pix -->
+                          <v-alert rounded="xl" v-else-if="showPix" type="info" outlined class="mt-4">Para pagar o pix é simples,
+                              só usar o aplicativo de seu
+                              banco para pagar PIX. O pagamento PIX foi desenvolvido pelo Banco Central para facilitar
+                              pagamentos.</v-alert>
+                          <v-btn rounded="xl" :disabled="pending" class="me-4 mt-4" v-if="showPix" @click="gerarQr" :color="color"
+                              block><span v-if="!pending">PAGAR AGORA</span><v-progress-circular size="20"  :color="color" indeterminate v-if="pending"></v-progress-circular></v-btn>
+                      </form>
+                  </v-card-text>
+              </v-card>
+          </v-row>
 
-            <!-- Diálogo de pagamento com sucesso -->
-            <v-dialog v-model="paymentSuccessDialog" max-width="400">
-                <v-card rounded="xl">
-                    <v-card-title class="headline">Pagamento realizado com sucesso!</v-card-title>
-                    <v-card-text>
-                        O seu pagamento foi processado com sucesso. Obrigado por sua compra!
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-btn :color="color" @click="paymentSuccessDialog = false">Fechar</v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-dialog>
+          <!-- Diálogo de pagamento com sucesso -->
+          <v-dialog persistent v-model="paymentSuccessDialog" max-width="400">
+              <v-card rounded="xl">
+                  <v-card-title class="headline">Pagamento realizado com sucesso!</v-card-title>
+                  <v-card-text>
+                      O seu pagamento foi processado com sucesso. Obrigado por sua compra!
+                  </v-card-text>
+                  <v-card-actions>
+                      <v-btn :color="color" @click="paymentSuccessDialog = false">Fechar</v-btn>
+                  </v-card-actions>
+              </v-card>
+          </v-dialog>
 
-            <!-- Diálogo do pix -->
-            <v-dialog v-model="paymentPix" max-width="400">
-                <v-card rounded="xl" color="background">
-                    <v-card-title class="headline">Pague seu pix!</v-card-title>
-                    <v-card-text class="text-center">
-                        <v-row justify="center" align="center">
-                            <v-col cols="12">
-                                <v-img class="mx-auto rounded-xl"
-                                    src="https://www.esalq.usp.br/sites/default/files/QR-Code-Manual_Salmonela.png"
-                                    width="200"></v-img>
-                            </v-col>
-                            <v-col cols="12">
-                                <v-text-field v-model="state.name" readonly append-inner-icon="mdi-content-copy"
-                                    required></v-text-field>
+          <!-- Diálogo do pix -->
+          <v-dialog v-model="paymentPix" max-width="400" persistent>
+              <v-card rounded="xl" color="background">
+                  <v-card-title class="headline">Pague seu pix!</v-card-title>
+                  <v-card-text class="text-center">
+                      <v-row justify="center" align="center">
+                          <v-col cols="12">
+                              <v-img class="mx-auto rounded-xl"
+                              :src="pixData.generateArray.imagemQrcode"
+                              width="200"></v-img>
+                          </v-col>
+                          <v-col cols="12">
+                              <v-text-field v-model="pixData.generateArray.qrcode" readonly append-inner-icon="mdi-content-copy"
+                                  required></v-text-field>
 
 
-                            </v-col>
-                            <v-col cols="12" class="mt-n6">
-                                <p class="text-caption text-center text-medium-emphasis">Quando o pagamento for
-                                    confirmado você
-                                    receberá um e-mail ou mensagem com o acesso ao seu produto.</p>
-                            </v-col>
-                        </v-row>
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-btn :color="color" @click="paymentPix = false">Fechar</v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-dialog>
+                          </v-col>
+                          <v-col cols="12" class="mt-n6">
+                              <p class="text-caption text-center text-medium-emphasis">Quando o pagamento for
+                                  confirmado você
+                                  receberá um e-mail ou mensagem com o acesso ao seu produto.</p>
+                          </v-col>
+                      </v-row>
+                  </v-card-text>
+                  <v-card-actions>
+                      <v-btn :color="color" @click="paymentPix = false">Fechar</v-btn>
+                  </v-card-actions>
+              </v-card>
+          </v-dialog>
 
-            <!-- Diálogo de progresso -->
-            <v-dialog v-model="showProgress" width="400">
-                <v-card rounded="xl" height="100" class="overflow-y-hidden">
-                    <v-row align="center" justify="center">
-                        <v-progress-circular indeterminate :color="color"></v-progress-circular>
-                    </v-row>
-                </v-card>
-            </v-dialog>
-        </v-container>
-    </v-app>
+          <!-- Diálogo de progresso -->
+          <v-dialog v-model="showProgress" width="400">
+              <v-card rounded="xl" height="100" class="overflow-y-hidden">
+                  <v-row align="center" justify="center">
+                      <v-progress-circular indeterminate :color="color"></v-progress-circular>
+                  </v-row>
+              </v-card>
+          </v-dialog>
+      </v-container>
+  </v-app>
 </template>
 
 <script setup>
@@ -178,61 +180,101 @@
 const route = useRoute();
 const name = route.params.slug;
 const dataResponse = ref(null);
+const priceProduct = ref(null);
 const color = ref("primary")
 
 const fetchData = async (name) => {
-    try {
-        const data = await $fetch(`https://psautocenter-panel.shop/socialpro/product/checkout/${name}`)
-        if (data) {
-            dataResponse.value = data
-            color.value = data[0].cor;
-        }
-    } catch (error) {
-        console.error(error);
-    }
+  try {
+      const data = await $fetch(`https://psautocenter-panel.shop/socialpro/product/checkout/${name}`)
+      if (data) {
+          dataResponse.value = data
+          priceProduct.value = data;
+          color.value = data[0].cor;
+          console.log(data)
+      }
+  } catch (error) {
+      console.error(error);
+  }
 
 };
 
+const personal = ref({
+  nome: null,
+  cpf: null,
+  celular: null,
+  email: null
+})
 
-const state = {
-    name: '',
-    email: '',
-    select: null,
-    checkbox: null,
+const gerarQr = async () => {
+  await makePaymentPix();
+  paymentPix.value = true;
 };
+
+const showErrorMessage = ref({
+  visible: false,
+  text: ""
+})
+const pixData = ref(0);
+const pending = ref(false);
+
+const makePaymentPix = async () => {
+  try{
+      if(!personal.value.nome || !personal.value.cpf || !personal.value.celular || !personal.value.email){
+        showErrorMessage.value.visible = true;
+        showErrorMessage.value.text = "Preencha todos os campos!";
+        return;
+      }
+      pending.value = true;
+      const data = await $fetch("https://api.seduvibe.com/api/create-pix", {
+          method: "post",
+          body: JSON.stringify({
+              name: personal.value.nome,
+              cpf: personal.value.cpf,
+              price: priceProduct.value[0].valor
+          })
+      })
+      if(data){
+          pending.value = false;
+          pixData.value = data
+      }
+      console.log(data);
+  }catch(error){
+      console.error(error);
+  }
+};
+
 
 const showPix = ref(false);
 const showCreditCardForm = ref(false);
-const pixVariant = ref('outlined');
-const creditCardVariant = ref('outlined');
+const pixVariant = ref('tonal');
+const creditCardVariant = ref('tonal');
 const paymentSuccessDialog = ref(false);
 const showProgress = ref(false);
 const paymentPix = ref(false);
 
 const toggleCard = (cardType) => {
-    if (cardType === 'pix') {
-        showPix.value = true;
-        showCreditCardForm.value = false;
-        pixVariant.value = 'tonal';
-        creditCardVariant.value = 'outlined';
-    } else if (cardType === 'creditCard') {
-        showPix.value = false;
-        showCreditCardForm.value = true;
-        pixVariant.value = 'outlined';
-        creditCardVariant.value = 'tonal';
-    }
+  if (cardType === 'pix') {
+      showPix.value = true;
+      showCreditCardForm.value = false;
+      pixVariant.value = 'elevated';
+      creditCardVariant.value = 'tonal';
+  } else if (cardType === 'creditCard') {
+      showPix.value = false;
+      showCreditCardForm.value = true;
+      pixVariant.value = 'tonal';
+      creditCardVariant.value = 'elevated';
+  }
 };
 
-// Método para enviar o formulário de cartão de crédito
 const submitCreditCardForm = () => {
-    showProgress.value = true; // Mostrar progresso ao enviar o formulário
+  showProgress.value = true; 
 
-    // Aqui você faria a requisição para o servidor
-    // Simulando uma requisição bem-sucedida por enquanto
-    setTimeout(() => {
-        showProgress.value = false; // Esconder o progresso após o envio bem-sucedido
-        paymentSuccessDialog.value = true; // Exibir diálogo de sucesso
-    }, 2000); // Simulando um atraso de 2 segundos para a resposta do servidor
+  // Aqui você faria a requisição para o servidor
+  // Simulando uma requisição bem-sucedida por enquanto
+  setTimeout(() => {
+      showProgress.value = false; // Esconder o progresso após o envio bem-sucedido
+      paymentSuccessDialog.value = true; // Exibir diálogo de sucesso
+  }, 2000); // Simulando um atraso de 2 segundos para a resposta do servidor
 };
 
 
