@@ -103,7 +103,7 @@
                                                   required></v-text-field>
                                           </v-col>
                                       </v-row>
-                                      <v-btn class="me-4 mt-4" :disabled="pending" rounded="xl" type="submit" :color="color" block><span v-if="!pending">PAGAR AGORA</span><v-progress-circular size="20" indeterminate :color="color" v-if="!pending"></v-progress-circular></v-btn>
+                                      <v-btn class="me-4 mt-4" :disabled="pending" rounded="xl" type="submit" :color="color" block><span v-if="!pending">PAGAR AGORA</span><span v-if="pending">GERANDO SEU PIX... &nbsp;</span><v-progress-circular size="20" indeterminate :color="color" v-if="!pending"></v-progress-circular></v-btn>
                                   </v-form>
                               </v-card-text>
                           </v-card>
@@ -114,7 +114,7 @@
                               banco para pagar PIX. O pagamento PIX foi desenvolvido pelo Banco Central para facilitar
                               pagamentos.</v-alert>
                           <v-btn rounded="xl" :disabled="pending" class="me-4 mt-4" v-if="showPix" @click="gerarQr" :color="color"
-                              block><span v-if="!pending">PAGAR AGORA</span><v-progress-circular size="20"  :color="color" indeterminate v-if="pending"></v-progress-circular></v-btn>
+                              block><span v-if="!pending">PAGAR AGORA</span><span v-if="pending">GERANDO SEU PIX... &nbsp;</span><v-progress-circular size="20"  :color="color" indeterminate v-if="pending"></v-progress-circular></v-btn>
                       </form>
                   </v-card-text>
               </v-card>
@@ -134,8 +134,8 @@
           </v-dialog>
 
           <!-- Diálogo do pix -->
-          <v-dialog v-model="paymentPix" max-width="400" persistent>
-              <v-card rounded="xl" color="background">
+          <v-dialog v-model="paymentPix" width="600" persistent>
+              <v-card rounded="xl" color="background" v-if="!paymentPixSuccess">
                   <v-card-title class="headline">Pague seu pix!</v-card-title>
                   <v-card-text class="text-center">
                       <v-row justify="center" align="center">
@@ -162,7 +162,7 @@
                       <v-btn :color="color" @click="paymentPix = false">Fechar</v-btn>
                   </v-card-actions>
               </v-card>
-          </v-dialog>
+              <v-card v-else rounded="xl" prepend-icon="mdi-check-circle" title="Pagamento concluído" subtitle="Em breve você receberá uma mensagem nossa!" color="background"><v-card-text>Entraremos em contato com você via whatsapp ou e-mail</v-card-text><v-card-actions class="text-center mx-auto"><v-btn rounded="xl" variant="tonal" color="primary" size="large">FALAR COM SUPORTE</v-btn></v-card-actions></v-card></v-dialog>
 
           <!-- Diálogo de progresso -->
           <v-dialog v-model="showProgress" width="400">
@@ -228,6 +228,7 @@ const showErrorMessage = ref({
   visible: false,
   text: ""
 })
+const paymentPixSuccess = ref(false);
 const pixData = ref(0);
 const pending = ref(false);
 
@@ -240,19 +241,54 @@ const makePaymentPix = async () => {
           body: JSON.stringify({
               name: personal.value.nome,
               cpf: personal.value.cpf,
-              price: priceProduct.value[0].valor
+              price: priceProduct.value[0].valor,
+              email: personal.value.email,
+              phone: personal.value.celular,
+              produto: dataResponse.value[0].nome
           })
       })
       if(data){
-          pending.value = false;
-          pixData.value = data
+        pixData.value = data
+        await transaction();
+        checkTransactionStatus(data.txid);
+          pending.value = false
       }
-      console.log(data);
   }catch(error){
       console.error(error);
   }
 };
 
+const transaction = async () => {
+    try{
+        const data = await $fetch(`https://checkout.socialpro.pro/transaction/transacoes`, {
+            method: "post",
+            body: JSON.stringify({
+                cpfCliente: personal.value.cpf,
+                idTransacao: pixData.value.txid
+            })
+        })
+    }catch(error){
+        console.error(error);
+    }
+};
+
+const checkTransactionStatus = async (txid) => {
+  try {
+    let status = "pendente";
+    while (status === "pendente") {
+      const response = await $fetch(`https://checkout.socialpro.pro/transaction/transacoes/${txid}/status`);
+      status = response[0].status;
+      console.log(`Status da transação ${txid}: ${status}`);
+      await new Promise(resolve => setTimeout(resolve, 5000)); // Aguarda 5 segundos antes de verificar novamente
+    }
+    if (status === "concluida") {
+      paymentPixSuccess.value = true;
+      console.log("A transação foi concluída com sucesso!");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const showPix = ref(false);
 const showCreditCardForm = ref(false);

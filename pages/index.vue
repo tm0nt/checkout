@@ -4,7 +4,7 @@
       <v-col cols="12" class="overflow-hidden">
         <v-card flat color="rgb(0,0,0,0)" class="elevation-0">
           <v-card-text class="text-center">
-            <v-img src="https://i.imgur.com/olMbUrE.png" width="200" class="mx-auto"></v-img>
+            <v-img src="https://i.imgur.com/RWArcWb.png" width="200" class="mx-auto"></v-img>
             <v-form @submit.prevent="submit">
               <p class="text-caption text-medium-emphasis mt-4">Entre com suas credenciais para escapar da matrix!</p>
               <v-row justify="center" class="mt-4">

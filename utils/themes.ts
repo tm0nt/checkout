@@ -8,7 +8,7 @@ export const light: ThemeDefinition = {
   colors: {
     background: "#F1F1F1",
     surface: "#FFFFFF",
-    primary: "#F3954A",
+    primary: "#e60700",
     secondary: twColors.purple[600],
     error: twColors.red[500],
     info: twColors.blue[500],
@@ -25,7 +25,7 @@ export const dark: ThemeDefinition = {
   colors: {
     background: "#101010",
     surface: "#262626",
-    primary: "#F3954A",
+    primary: "#e60700",
     secondary: twColors.purple[500],
     error: twColors.red[500],
     info: twColors.blue[500],
