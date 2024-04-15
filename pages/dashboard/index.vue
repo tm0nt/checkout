@@ -8,11 +8,10 @@
             color="surface"
             link
             flat
-            class="elevation-0"
+            class="elevation-4"
             height="85"
             prepend-icon="mdi-currency-usd"
-            append-icon="mdi-reload"
-            rounded="lg"
+            rounded="xl"
           >
             <template v-slot:title>
               <p class="text-subtitle-1">Vendas</p>
@@ -27,11 +26,10 @@
             color="surface"
             link
             flat
-            class="elevation-0"
-            append-icon="mdi-reload"
+            class="elevation-4"
             height="85"
             prepend-icon="mdi-cup"
-            rounded="lg"
+            rounded="xl"
           >
             <template v-slot:title>
               <p class="text-subtitle-1">Produtos</p>

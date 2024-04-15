@@ -6,13 +6,10 @@
           <v-card-text class="text-center">
             <v-img
               src="https://i.imgur.com/RWArcWb.png"
-              width="200"
+              width="150"
               class="mx-auto"
             ></v-img>
             <v-form @submit.prevent="submit">
-              <p class="text-caption text-medium-emphasis mt-4">
-                Entre com suas credenciais para escapar da matrix!
-              </p>
               <v-row justify="center" class="mt-4">
                 <v-col cols="12" md="3">
                   <v-text-field

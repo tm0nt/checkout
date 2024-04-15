@@ -56,7 +56,7 @@
                                   <v-file-input class="mt-n4" density="compact" show-size bg-color="surface" label="Envie um banner"
                                       rounded="xl" accept="image/*" counter  variant="solo" :prepend-icon="false" chips
                                       prepend-inner-icon="mdi-camera" @change="handleUploadCover"></v-file-input>
-                                  <v-card class="rounded-xl elevation-0" flat v-if="imagePreviewCover" width="150">
+                                  <v-card class="rounded-xl elevation-4" flat v-if="imagePreviewCover" width="150">
                                       <v-img  :src="imagePreviewCover" cover alt="Prévia do banner">
                                           <v-btn color="background" size="x-small" fab rounded="xl" class="ma-4"
                                               @click="imagePreviewCover = null"><v-icon
