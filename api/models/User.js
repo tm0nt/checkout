@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const usuarioSchema = new mongoose.Schema({
   nome: { type: String, required: true },
@@ -8,14 +8,14 @@ const usuarioSchema = new mongoose.Schema({
   efipay: {
     client_id: String,
     client_secret: String,
-    certificado: Buffer
-  }
+    certificado: Buffer,
+  },
 });
 
 // Middleware para criptografar a senha antes de salvar
-usuarioSchema.pre('save', async function(next) {
+usuarioSchema.pre("save", async function (next) {
   const user = this;
-  if (!user.isModified('senha')) return next();
+  if (!user.isModified("senha")) return next();
   try {
     const hash = await bcrypt.hash(user.senha, 10);
     user.senha = hash;
@@ -25,4 +25,4 @@ usuarioSchema.pre('save', async function(next) {
   }
 });
 
-module.exports = mongoose.model('Usuario', usuarioSchema);
+module.exports = mongoose.model("Usuario", usuarioSchema);

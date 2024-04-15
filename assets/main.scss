@@ -1,5 +1,5 @@
-$family: "Inter var", "Inter", apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
-  Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$family: "Inter var", "Inter", apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
 @use "vuetify" with (
   $body-font-family: $family

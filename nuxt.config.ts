@@ -4,7 +4,8 @@ import vuetify from "vite-plugin-vuetify";
 const title = "Checkout";
 const shortTitle = "Checkout";
 const description = "Faça parte da nossa comunidade!";
-const image = "https://i.pinimg.com/280x280_RS/01/90/6f/01906f33e6e7db0cf77e81593917fdf1.jpg";
+const image =
+  "https://i.pinimg.com/280x280_RS/01/90/6f/01906f33e6e7db0cf77e81593917fdf1.jpg";
 const url = "https://socialpro.pro";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
