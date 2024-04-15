@@ -52,7 +52,7 @@
                 <v-col cols="12" md="6">
                   <v-text-field
                     hide-spin-buttons
-                    hint="Digite um e-mail provedor de e-mail real(@gmail.com, @hotmail.com)"
+                    hint="Ex: seuemail@gmail.com"
                     v-model="personal.email"
                     class="mt-n8 mt-md-0"
                     label="E-mail"
@@ -294,10 +294,10 @@
         ><v-btn
           variant="elevated"
           class="mt-2"
-          color="primary"
+          :color="color"
           rounded="xl"
           block
-          @click="paymentPix = false"
+          @click="paymentSuccessDialog = false"
           ><v-icon>mdi-close</v-icon></v-btn
         ></v-dialog
       >
@@ -656,7 +656,13 @@ const generatePayment = async () => {
         ],
       }),
     });
-    if (data) {
+    if (data.status == "unpaid") {
+      showErrorMessageCard.value.visible = true;
+      showErrorMessageCard.value.text = "Transação recusada!";
+      pending.value = false;
+      console.log(data);
+    }
+    if(data.status == "paid"){
       paymentSuccessDialog.value = true;
       pending.value = false;
       console.log(data);
