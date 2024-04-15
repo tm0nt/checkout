@@ -181,6 +181,7 @@ const submit = async () => {
           showResponse.value.color = "success";
           showResponse.value.text = "Produto cadastrado!";
           showResponse.value.visible = true;
+          ProductDialog.value = false;
           fetchProduct();
       }
   } catch (error) {
