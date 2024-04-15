@@ -114,85 +114,85 @@ const _inlineRuntimeConfig = {
       "theme_color": "#151515",
       "icons": [
         {
-          "src": "/_nuxt/icons/64x64.3aabb4fe.png",
+          "src": "/_nuxt/icons/64x64.e9e01ecd.png",
           "type": "image/png",
           "sizes": "64x64",
           "purpose": "any"
         },
         {
-          "src": "/_nuxt/icons/64x64.maskable.3aabb4fe.png",
+          "src": "/_nuxt/icons/64x64.maskable.e9e01ecd.png",
           "type": "image/png",
           "sizes": "64x64",
           "purpose": "maskable"
         },
         {
-          "src": "/_nuxt/icons/120x120.3aabb4fe.png",
+          "src": "/_nuxt/icons/120x120.e9e01ecd.png",
           "type": "image/png",
           "sizes": "120x120",
           "purpose": "any"
         },
         {
-          "src": "/_nuxt/icons/120x120.maskable.3aabb4fe.png",
+          "src": "/_nuxt/icons/120x120.maskable.e9e01ecd.png",
           "type": "image/png",
           "sizes": "120x120",
           "purpose": "maskable"
         },
         {
-          "src": "/_nuxt/icons/144x144.3aabb4fe.png",
+          "src": "/_nuxt/icons/144x144.e9e01ecd.png",
           "type": "image/png",
           "sizes": "144x144",
           "purpose": "any"
         },
         {
-          "src": "/_nuxt/icons/144x144.maskable.3aabb4fe.png",
+          "src": "/_nuxt/icons/144x144.maskable.e9e01ecd.png",
           "type": "image/png",
           "sizes": "144x144",
           "purpose": "maskable"
         },
         {
-          "src": "/_nuxt/icons/152x152.3aabb4fe.png",
+          "src": "/_nuxt/icons/152x152.e9e01ecd.png",
           "type": "image/png",
           "sizes": "152x152",
           "purpose": "any"
         },
         {
-          "src": "/_nuxt/icons/152x152.maskable.3aabb4fe.png",
+          "src": "/_nuxt/icons/152x152.maskable.e9e01ecd.png",
           "type": "image/png",
           "sizes": "152x152",
           "purpose": "maskable"
         },
         {
-          "src": "/_nuxt/icons/192x192.3aabb4fe.png",
+          "src": "/_nuxt/icons/192x192.e9e01ecd.png",
           "type": "image/png",
           "sizes": "192x192",
           "purpose": "any"
         },
         {
-          "src": "/_nuxt/icons/192x192.maskable.3aabb4fe.png",
+          "src": "/_nuxt/icons/192x192.maskable.e9e01ecd.png",
           "type": "image/png",
           "sizes": "192x192",
           "purpose": "maskable"
         },
         {
-          "src": "/_nuxt/icons/384x384.3aabb4fe.png",
+          "src": "/_nuxt/icons/384x384.e9e01ecd.png",
           "type": "image/png",
           "sizes": "384x384",
           "purpose": "any"
         },
         {
-          "src": "/_nuxt/icons/384x384.maskable.3aabb4fe.png",
+          "src": "/_nuxt/icons/384x384.maskable.e9e01ecd.png",
           "type": "image/png",
           "sizes": "384x384",
           "purpose": "maskable"
         },
         {
-          "src": "/_nuxt/icons/512x512.3aabb4fe.png",
+          "src": "/_nuxt/icons/512x512.e9e01ecd.png",
           "type": "image/png",
           "sizes": "512x512",
           "purpose": "any"
         },
         {
-          "src": "/_nuxt/icons/512x512.maskable.3aabb4fe.png",
+          "src": "/_nuxt/icons/512x512.maskable.e9e01ecd.png",
           "type": "image/png",
           "sizes": "512x512",
           "purpose": "maskable"
@@ -1226,7 +1226,7 @@ function createServerHead(options = {}) {
 
 const unheadPlugins = [];
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"hid":"description","name":"description","content":"Faça parte da nossa comunidade!"},{"property":"og:site_name","content":"Checkout"},{"hid":"og:type","property":"og:type","content":"website"},{"hid":"og:url","property":"og:url","content":"https://socialpro.pro"},{"hid":"og:image:secure_url","property":"og:image:secure_url","content":"https://i.pinimg.com/280x280_RS/01/90/6f/01906f33e6e7db0cf77e81593917fdf1.jpg"},{"hid":"og:title","property":"og:title","content":"Checkout"},{"hid":"og:description","property":"og:description","content":"Faça parte da nossa comunidade!"},{"hid":"og:image","property":"og:image","content":"https://i.pinimg.com/280x280_RS/01/90/6f/01906f33e6e7db0cf77e81593917fdf1.jpg"},{"name":"twitter:card","content":"summary_large_image"},{"hid":"twitter:url","name":"twitter:url","content":"https://socialpro.pro"},{"hid":"twitter:title","name":"twitter:title","content":"Checkout"},{"hid":"twitter:description","name":"twitter:description","content":"Faça parte da nossa comunidade!"},{"hid":"twitter:image","name":"twitter:image","content":"https://i.pinimg.com/280x280_RS/01/90/6f/01906f33e6e7db0cf77e81593917fdf1.jpg"},{"name":"mobile-web-app-capable","content":"yes","key":"mobile-web-app-capable"},{"name":"apple-mobile-web-app-title","content":"Checkout","key":"apple-mobile-web-app-title"},{"name":"author","content":"Tássio Montenegro","key":"author"},{"name":"description","content":"Faça parte da nossa comunidade!","key":"description"},{"name":"theme-color","content":"#151515","key":"theme-color"},{"property":"og:type","content":"website","key":"og:type"},{"property":"og:title","content":"Checkout","key":"og:title"},{"property":"og:site_name","content":"Checkout","key":"og:site_name"},{"property":"og:description","content":"Faça parte da nossa comunidade!","key":"og:description"},{"name":"twitter:card","content":"summary","key":"twitter:card"}],"link":[{"rel":"stylesheet","href":"https://rsms.me/inter/inter.css"},{"rel":"preconnect","href":"https://rsms.me/"},{"rel":"icon","type":"image/x-icon","href":"/favicon.ico"},{"rel":"canonical","href":"https://socialpro.pro"},{"rel":"icon","href":"/_nuxt/icons/64x64.3aabb4fe.png","key":"favicon"},{"rel":"apple-touch-icon","href":"/_nuxt/icons/512x512.maskable.3aabb4fe.png","sizes":"512x512","key":"favicon-apple"},{"rel":"manifest","href":"/manifest.json"}],"style":[],"script":[],"noscript":[],"title":"Checkout","titleTemplate":"%s | Checkout","htmlAttrs":{"lang":"en"}};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"hid":"description","name":"description","content":"Faça parte da nossa comunidade!"},{"property":"og:site_name","content":"Checkout"},{"hid":"og:type","property":"og:type","content":"website"},{"hid":"og:url","property":"og:url","content":"https://socialpro.pro"},{"hid":"og:image:secure_url","property":"og:image:secure_url","content":"https://i.pinimg.com/280x280_RS/01/90/6f/01906f33e6e7db0cf77e81593917fdf1.jpg"},{"hid":"og:title","property":"og:title","content":"Checkout"},{"hid":"og:description","property":"og:description","content":"Faça parte da nossa comunidade!"},{"hid":"og:image","property":"og:image","content":"https://i.pinimg.com/280x280_RS/01/90/6f/01906f33e6e7db0cf77e81593917fdf1.jpg"},{"name":"twitter:card","content":"summary_large_image"},{"hid":"twitter:url","name":"twitter:url","content":"https://socialpro.pro"},{"hid":"twitter:title","name":"twitter:title","content":"Checkout"},{"hid":"twitter:description","name":"twitter:description","content":"Faça parte da nossa comunidade!"},{"hid":"twitter:image","name":"twitter:image","content":"https://i.pinimg.com/280x280_RS/01/90/6f/01906f33e6e7db0cf77e81593917fdf1.jpg"},{"name":"mobile-web-app-capable","content":"yes","key":"mobile-web-app-capable"},{"name":"apple-mobile-web-app-title","content":"Checkout","key":"apple-mobile-web-app-title"},{"name":"author","content":"Tássio Montenegro","key":"author"},{"name":"description","content":"Faça parte da nossa comunidade!","key":"description"},{"name":"theme-color","content":"#151515","key":"theme-color"},{"property":"og:type","content":"website","key":"og:type"},{"property":"og:title","content":"Checkout","key":"og:title"},{"property":"og:site_name","content":"Checkout","key":"og:site_name"},{"property":"og:description","content":"Faça parte da nossa comunidade!","key":"og:description"},{"name":"twitter:card","content":"summary","key":"twitter:card"}],"link":[{"rel":"stylesheet","href":"https://rsms.me/inter/inter.css"},{"rel":"preconnect","href":"https://rsms.me/"},{"rel":"icon","type":"image/x-icon","href":"/favicon.png"},{"rel":"canonical","href":"https://socialpro.pro"},{"rel":"icon","href":"/_nuxt/icons/64x64.e9e01ecd.png","key":"favicon"},{"rel":"apple-touch-icon","href":"/_nuxt/icons/512x512.maskable.e9e01ecd.png","sizes":"512x512","key":"favicon-apple"},{"rel":"manifest","href":"/manifest.json"}],"style":[],"script":[],"noscript":[],"title":"Checkout","titleTemplate":"%s | Checkout","htmlAttrs":{"lang":"en"}};
 
 const appRootId = "__nuxt";
 
