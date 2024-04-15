@@ -226,13 +226,15 @@
                       :color="color"
                       block
                       ><span v-if="!pending">PAGAR AGORA</span
-                      ><span v-if="pending"
+                      >
+                      
+                      <span v-if="pending"
                         >PROCESSANDO SEU PAGAMENTO... &nbsp;</span
                       ><v-progress-circular
                         size="20"
                         indeterminate
                         :color="color"
-                        v-if="!pending"
+                        v-if="pending"
                       ></v-progress-circular
                     ></v-btn>
                   </v-form>
