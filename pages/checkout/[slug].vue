@@ -52,6 +52,7 @@
                 <v-col cols="12" md="6">
                   <v-text-field
                     hide-spin-buttons
+                    hint="Digite um e-mail provedor de e-mail real(@gmail.com, @hotmail.com)"
                     v-model="personal.email"
                     class="mt-n8 mt-md-0"
                     label="E-mail"
@@ -64,10 +65,10 @@
                   <v-text-field
                     v-model="personal.cpf"
                     hide-spin-buttons
-                    type="number"
                     class="mt-n8 mt-md-0"
                     label="CPF"
                     required
+                    v-maska="'###-###-###-##'"
                     :color="color"
                     prepend-inner-icon="mdi-document"
                   ></v-text-field>
@@ -199,7 +200,7 @@
                           v-model="selectedInstallments"
                           density="compact"
                           item-value="installment"
-                          item-title="installment"
+                          item-title="itemTitle"
                           variant="solo"
                           no-data-text="Digite um número de cartão antes"
                           class="mt-n8 mt-md-0"
@@ -207,7 +208,8 @@
                           label="Parcelas"
                           prepend-inner-icon="mdi-fraction-one-half"
                           required
-                        ></v-select>
+                        >
+                      </v-select>
                       </v-col>
                     </v-row>
                     <v-alert
@@ -534,9 +536,25 @@ const getParcel = async () => {
     );
 
     if (data) {
+      const formattedItems = data.installments.installments.map(item => {
+        const currencyValue = parseFloat(item.currency.replace(',', '.')); 
+        const multiplicationResult = item.installment * currencyValue;
+        const parcelWord = item.installment === 1 ? 'parcela' : 'parcelas';
+        const formattedCurrency = multiplicationResult.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        });
+
+        return {
+          installment: item.installment,
+          currency: currencyValue,
+          itemTitle: `${item.installment}ª ${parcelWord} de R$ ${item.currency} (${formattedCurrency})`,
+        };
+      });
+
       card.value.brand = data.installments.name;
-      formattedInstallments.value = data.installments.installments;
-      selectedInstallments.value = data.installments.installments[0];
+      formattedInstallments.value = formattedItems;
+      selectedInstallments.value = formattedItems[0];
     }
   } catch (error) {
     console.error(error);
@@ -548,7 +566,7 @@ const getParcel = async () => {
 
 const getPaymentToken = async () => {
   try {
-    if (
+  if (
       !card.value.number ||
       !card.value.cvv ||
       !card.value.month ||
@@ -568,6 +586,11 @@ const getPaymentToken = async () => {
       showErrorMessageCard.value.text = "Preencha os campos!";
       return;
     }
+    if (!/^(\S+)\s(\S+)$/.test(personal.value.nome)) {
+  showErrorMessageCard.value.visible = true;
+  showErrorMessageCard.value.text = "Digite seu nome e um sobrenome!";
+  return;
+}  
     showErrorMessageCard.value.visible = false;
     showErrorMessageCard.value.text = "";
     pending.value = true;

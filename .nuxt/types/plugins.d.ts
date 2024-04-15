@@ -20,6 +20,7 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/dev-server-logs.client").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used").default> &
   InjectionType<typeof import("../../plugins/locally").default> &
+  InjectionType<typeof import("../../plugins/maska").default> &
   InjectionType<typeof import("../../plugins/vuetify").default>
 
 declare module '#app' {
