@@ -133,18 +133,13 @@
         </v-card>
       </v-row>
 
-      <!-- Diálogo de pagamento com sucesso -->
-      <v-dialog persistent v-model="paymentSuccessDialog" max-width="400">
-        <v-card rounded="xl">
-          <v-card-title class="headline">Pagamento realizado com sucesso!</v-card-title>
-          <v-card-text>
-            O seu pagamento foi processado com sucesso. Obrigado por sua compra!
-          </v-card-text>
-          <v-card-actions>
-            <v-btn :color="color" @click="paymentSuccessDialog = false">Fechar</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+      <v-dialog width="600" persistent v-model="paymentSuccessDialog">
+        <v-card rounded="xl" title="Pagamento concluído" subtitle="Em breve você receberá uma mensagem nossa!"
+          color="background"><v-card-text>Entraremos em contato com você via whatsapp ou
+            e-mail</v-card-text><v-card-actions><v-chip prepend-icon="mdi-phone" color="success" variant="tonal">Nosso
+              suporte</v-chip></v-card-actions><template v-slot:prepend><v-icon
+              color="success">mdi-check-circle</v-icon></template></v-card><v-btn variant="elevated" class="mt-2"
+          color="primary" rounded="xl" block @click="paymentPix = false"><v-icon>mdi-close</v-icon></v-btn></v-dialog>
 
       <!-- Diálogo do pix -->
       <v-dialog v-model="paymentPix" width="600" persistent>
@@ -444,6 +439,7 @@ const generatePayment = async () => {
       }),
     });
     if(data){
+      paymentSuccessDialog.value = true
       pending.value = false
       console.log(data);
     }
