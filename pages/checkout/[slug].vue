@@ -172,7 +172,7 @@
             e-mail</v-card-text><v-card-actions><v-chip prepend-icon="mdi-phone" color="success" variant="tonal">Nosso
               suporte</v-chip></v-card-actions><template v-slot:prepend><v-icon
               color="success">mdi-check-circle</v-icon></template></v-card><v-btn variant="elevated" class="mt-2"
-          color="primary" rounded="xl" block @click="paymentPix = false"><v-icon>mdi-close</v-icon></v-btn></v-dialog>
+          :color="color" rounded="xl" block @click="paymentPix = false"><v-icon>mdi-close</v-icon></v-btn></v-dialog>
     </v-container>
   </v-app>
 </template>
