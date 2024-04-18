@@ -9,7 +9,7 @@ export const defaults: DefaultsInstance = {
   },
   VBtn: {
     variant: "flat",
-    height: 42,
+    height: 50,
     rounded: "sm",
     size: "small",
   },

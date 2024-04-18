@@ -1,11 +1,6 @@
 <template>
-  <v-img width="100%" :src="dataResponse[0]?.banner">
-    <template v-slot:placeholder>
-      <div class="d-flex align-center justify-center fill-height">
-        <v-progress-circular :color="color" indeterminate></v-progress-circular>
-      </div>
-    </template>
-  </v-img>
+<v-card :image="dataResponse[0].banner" width="100%" height="300" class="elevation-0" flat>
+</v-card>
   <v-app>
     <v-container>
       <v-card class="mx-auto elevation-0" color="rgb(0,0,0,0)" flat>
@@ -26,7 +21,7 @@
       <v-row>
         <v-toolbar color="rgb(0,0,0,0)" height="20"></v-toolbar>
 
-        <v-card class="mx-auto elevation-0" width="800" color="background" rounded="xl">
+        <v-card class="mx-auto elevation-4" width="800" color="background" rounded="xl">
           <v-btn :color="color" variant="tonal" block>{{
     dataResponse[0]?.nome
   }}</v-btn>
@@ -39,7 +34,7 @@
                     prepend-inner-icon="mdi-account" required></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-text-field hide-spin-buttons hint="Ex: seuemail@gmail.com" v-model="personal.email"
+                  <v-text-field hide-spin-buttons  v-model="personal.email"
                     class="mt-n8 mt-md-0" label="E-mail" :color="color" prepend-inner-icon="mdi-email"
                     required></v-text-field>
                 </v-col>
@@ -132,6 +127,8 @@
                   &nbsp;</span><v-progress-circular size="20" :color="color" indeterminate
                   v-if="pending"></v-progress-circular></v-btn>
             </form>
+            <p class="text-caption text-center text-medium-emphasis mt-4">Todos os pagamentos são processados pela Efipay.</p>
+            <v-img class="mx-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3bqquVpzhlv8Yi8Dhnn1hXJXJLz495v1UVH3-GgpegA&s" width="50"></v-img>
           </v-card-text>
         </v-card>
       </v-row>
@@ -169,9 +166,6 @@
               </v-col>
             </v-row>
           </v-card-text>
-          <v-card-actions>
-            <v-btn :color="color" @click="paymentPix = false">Fechar</v-btn>
-          </v-card-actions>
         </v-card>
         <v-card v-else rounded="xl" title="Pagamento concluído" subtitle="Em breve você receberá uma mensagem nossa!"
           color="background"><v-card-text>Entraremos em contato com você via whatsapp ou
@@ -200,7 +194,6 @@ const fetchData = async (name) => {
       dataResponse.value = data;
       priceProduct.value = data;
       color.value = data[0]?.cor;
-      console.log(data);
     }
   } catch (error) {
     console.error(error);
@@ -301,13 +294,11 @@ const checkTransactionStatus = async (txid) => {
         `https://checkout.socialpro.pro/transaction/transacoes/${txid}/status`,
       );
       status = response[0].status;
-      console.log(`Status da transação ${txid}: ${status}`);
       await new Promise((resolve) => setTimeout(resolve, 5000)); // Aguarda 5 segundos antes de verificar novamente
     }
     if (status === "concluida") {
       paymentPixSuccess.value = true;
       enviarEmail()
-      console.log("A transação foi concluída com sucesso!");
     }
   } catch (error) {
     console.error(error);
@@ -420,7 +411,6 @@ const getPaymentToken = async () => {
       },
     );
     if (data) {
-      console.log(data);
       paymentTokenValue.value = data.paymentToken;
       await generatePayment();
     }
@@ -431,11 +421,34 @@ const getPaymentToken = async () => {
   }
 };
 
+const cadastroCliente = async () => {
+  try{
+    const data = await $fetch(`https://checkout.socialpro.pro/client/`, {
+      method: "post",
+      body: JSON.stringify({
+        nome: personal.value.nome,
+        email: personal.value.email,
+        phone: personal.value.celular,
+        cpf: personal.value.cpf,
+        produto: dataResponse.value[0].nome,
+      })
+    })
+    if(data){
+      console.log(data);
+    }
+  }catch(error){
+    console.error(error);
+  }
+};
+
 const generatePayment = async () => {
   try {
     const data = await $fetch("https://api.socialpro.pro/credit/confirm", {
       method: "post",
       body: JSON.stringify({
+        metadata: {
+          notification_url: "https://webhook.socialpro.pro/webhook"
+        },
         payment: {
           credit_card: {
             installments: selectedInstallments.value.installment,
@@ -465,7 +478,7 @@ const generatePayment = async () => {
             marketplace: {
               repasses: [
                 {
-                  payee_code: "payee_code1",
+                  payee_code: "893fb663c126d6cf0342050f9b178174",
                   percentage: 700
                 },
               ],
@@ -478,13 +491,12 @@ const generatePayment = async () => {
       showErrorMessageCard.value.visible = true;
       showErrorMessageCard.value.text = "Transação recusada!";
       pending.value = false;
-      console.log(data);
     }
     if (data.status == "paid") {
       paymentSuccessDialog.value = true;
       pending.value = false;
+      cadastroCliente();
       enviarEmail()
-      console.log(data);
     }
   } catch (error) {
     pending.value = false;
@@ -497,8 +509,7 @@ const enviarEmail = async () => {
   try{
     if(dataResponse.value[0].enviarEmail === true){
       const fetchBody = await $fetch(`https://checkout.socialpro.pro/emailContent/list/${dataResponse.value[0].checkout}`)
-      dataMail.value = fetchBody;
-      console.log(fetchBody)
+      dataMail.value = fetchBody[0];
       const data = await $fetch("https://checkout.socialpro.pro/emailContent/send", {
       method: "post",
       body: JSON.stringify({
@@ -508,7 +519,6 @@ const enviarEmail = async () => {
         arquivoUrl: dataMail.value.arquivoUrl
       })
     })
-    console.log(data)
     }else{
       //
     }
