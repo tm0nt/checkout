@@ -286,12 +286,12 @@
         <v-card
           rounded="xl"
           title="Pagamento concluído"
-          subtitle="Em breve você receberá uma mensagem nossa!"
+          subtitle="Em breve você receberá uma mensagem nomentssa!"
           color="background"
           ><v-card-text
             >Entraremos em contato com você via whatsapp ou e-mail</v-card-text
           ><v-card-actions
-            ><v-chip prepend-icon="mdi-phone" color="success" variant="tonal" :href="`https://wa.me/5551992598131?text=Ol%C3%A1+comprei+o+produto+${dataResponse.value[0].nome}+e+quero+meu+acesso`"
+            ><v-chip prepend-icon="mdi-phone" color="success" variant="tonal" href="https://wa.me/5551992598131?text=Ol%C3%A1+comprei+o+produto+{NOME+DO+PRODUTO}+e+quero+meu+acesso"
               >Nosso suporte</v-chip
             ></v-card-actions
           ><template v-slot:prepend
@@ -357,7 +357,7 @@
           ><v-card-text
             >Entraremos em contato com você via whatsapp ou e-mail</v-card-text
           ><v-card-actions
-            ><v-chip prepend-icon="mdi-phone" color="success" variant="tonal" :href="`https://wa.me/5551992598131?text=Ol%C3%A1+comprei+o+produto+${dataResponse.value[0].nome}+e+quero+meu+acesso`"
+            ><v-chip prepend-icon="mdi-phone" color="success" variant="tonal" href="https://wa.me/5551992598131?text=Ol%C3%A1+comprei+o+produto+{NOME+DO+PRODUTO}+e+quero+meu+acesso"
               >Nosso suporte</v-chip
             ></v-card-actions
           ><template v-slot:prepend
