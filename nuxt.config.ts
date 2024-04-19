@@ -1,11 +1,11 @@
 import vuetify from "vite-plugin-vuetify";
 
 // PWA Config
-const title = "Checkout";
-const shortTitle = "Checkout";
-const description = "Faça parte da nossa comunidade!";
+const title = "SocialPro";
+const shortTitle = "A maior fraternidade do brasil!";
+const description = "Somos uma fraternidade especializada em desenvolvimento pessoal masculino";
 const image =
-  "https://i.pinimg.com/280x280_RS/01/90/6f/01906f33e6e7db0cf77e81593917fdf1.jpg";
+  "https://i.imgur.com/TW5cTz0.png";
 const url = "https://socialpro.pro";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
@@ -28,8 +28,8 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Checkout",
-      titleTemplate: "%s | Checkout",
+      title: "Social Pro",
+      titleTemplate: "%s | A maior comunidade do Brasil!",
       link: [
         { rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
         { rel: "preconnect", href: "https://rsms.me/" },

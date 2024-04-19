@@ -291,7 +291,7 @@
           ><v-card-text
             >Entraremos em contato com você via whatsapp ou e-mail</v-card-text
           ><v-card-actions
-            ><v-chip prepend-icon="mdi-phone" color="success" variant="tonal"
+            ><v-chip prepend-icon="mdi-phone" color="success" variant="tonal" :href="`https://wa.me/5551992598131?text=Ol%C3%A1+comprei+o+produto+${dataResponse.value[0].nome}+e+quero+meu+acesso`"
               >Nosso suporte</v-chip
             ></v-card-actions
           ><template v-slot:prepend
@@ -357,7 +357,7 @@
           ><v-card-text
             >Entraremos em contato com você via whatsapp ou e-mail</v-card-text
           ><v-card-actions
-            ><v-chip prepend-icon="mdi-phone" color="success" variant="tonal"
+            ><v-chip prepend-icon="mdi-phone" color="success" variant="tonal" :href="`https://wa.me/5551992598131?text=Ol%C3%A1+comprei+o+produto+${dataResponse.value[0].nome}+e+quero+meu+acesso`"
               >Nosso suporte</v-chip
             ></v-card-actions
           ><template v-slot:prepend
@@ -519,7 +519,6 @@ const generateYears = Array.from(
   { length: 2050 - new Date().getFullYear() + 1 },
   (_, index) => (new Date().getFullYear() + index).toString(),
 );
-
 const selectedInstallments = ref(null);
 const formattedInstallments = ref([]);
 
