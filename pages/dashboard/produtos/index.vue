@@ -149,13 +149,16 @@
                             label="Assunto"
                             v-model="email.assunto"
                           ></v-text-field>
-                          <v-text-field
+                          <v-textarea
                             label="Corpo"
                             prepend-inner-icon="mdi-page-layout-body"
                             density="compact"
                             v-model="email.corpo"
+                            bg-color="surface"
+                            variant="solo"
+                            rounded="xl"
                             class="mt-n4"
-                          ></v-text-field>
+                          ></v-textarea>
                           <v-file-input
                             counter
                             chips
