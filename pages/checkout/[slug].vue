@@ -1,6 +1,7 @@
 <template>
   <v-card
     :image="dataResponse[0].banner"
+    v-if="dataResponse[0].banner"
     width="100%"
     height="300"
     class="elevation-0"
