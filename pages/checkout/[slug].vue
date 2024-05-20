@@ -531,7 +531,7 @@ const getParcel = async () => {
         method: "POST",
         body: JSON.stringify({
           cardNumber: card.value.number,
-          total: 10 * 100,
+          total: priceProduct.value[0].valor,
         }),
       },
     );
